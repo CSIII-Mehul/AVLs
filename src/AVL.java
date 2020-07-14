@@ -69,6 +69,7 @@ public class AVL extends BST{
 		return "error";
 	}
 	//The reason it is called head is because the root of the tree already exists, so there may be an accidental mixup betweem the true root and what it is being passed into the method
+	//a right rotation
 	public BST_node right_heavy(BST_node head, BST_node R)
 	{
 		BST_node child;
@@ -96,6 +97,36 @@ public class AVL extends BST{
 			
 	}
 	
+	// when a right rotation is not enough to deal with right-heavy tree
+	public BST_node double_right(BST_node head, BST_node R)
+	{
+		BST_node child;
+		if(R.left == null)
+		{
+			return right_heavy(head,  R);
+		}
+		else if (R.left != null)
+		{
+			BST_node hold = R;
+			head.right = R.left;
+			if(R.left.right != null)
+			{
+				return double_right(R.left, R.left.right);
+			}
+			else 
+			{
+				R.left = null;
+		    	head.right.right=  hold;	
+			}
+	        return head;
+
+		}
+		return null;
+			
+			
+	}
+	
+	//a left rotation
 	public BST_node left_heavy(BST_node head, BST_node L)
 	{
 		BST_node child;
@@ -115,6 +146,35 @@ public class AVL extends BST{
 			head.right= hold;
 			head.right.left = null;
 			head.right.right = child;
+	        return head;
+
+		}
+		return null;
+			
+			
+	}
+	
+	// when a left rotation is no enough to deal with left-heavy tree
+	public BST_node double_left(BST_node head, BST_node L)
+	{
+		BST_node child;
+		if(L.right == null)
+		{
+			return left_heavy(head,  L);
+		}
+		else if (L.right != null)
+		{
+			BST_node hold = L;
+			head.left = L.right;
+			if(L.right.left != null)
+			{
+				return double_left(L.right, L.right.left);
+			}
+			else 
+			{
+				L.right = null;
+		    	head.left.left=  hold;	
+			}
 	        return head;
 
 		}

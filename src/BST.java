@@ -81,10 +81,11 @@ public class BST {
 	public static void main(String[] args)
 	{
 		BST alpha = new BST(4);
-		alpha.adder(6);
-		alpha.adder(7);
-
+		alpha.adder(2);
+		alpha.adder(3);
+		alpha.adder(1);
 		
+	
 		alpha.ascend(4);
 		
 		AVL beta = new AVL(4, alpha.root);
@@ -93,7 +94,7 @@ public class BST {
 		{
 			while(beta.balance(beta.root, -1).equals("B")== false)
 			{
-				beta.root =beta.right_heavy(beta.root, beta.root.right);
+				beta.root =beta.double_right(beta.root, beta.root.right);
 
 			}
 		}
@@ -101,7 +102,7 @@ public class BST {
 		{
 			while(beta.balance(beta.root, -1).equals("B")== false)
 			{
-				beta.root =beta.left_heavy(beta.root, beta.root.left);
+				beta.root =beta.double_left(beta.root, beta.root.left);
 
 			}
 		}
