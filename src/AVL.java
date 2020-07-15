@@ -108,13 +108,19 @@ public class AVL extends BST{
 		else if (R.left != null)
 		{
 			BST_node hold = R;
-			head.right = R.left;
 			if(R.left.right != null)
 			{
-				return double_right(R.left, R.left.right);
+				//this must be done so that the further most right child is not lost or replaces another one
+				R.left.right.right= hold;
+				head.right = R.left;
+				R.left = null;
+		    
+
 			}
 			else 
 			{
+				head.right = R.left;
+
 				R.left = null;
 		    	head.right.right=  hold;	
 			}

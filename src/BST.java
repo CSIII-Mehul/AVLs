@@ -77,13 +77,15 @@ public class BST {
 	}
 	
     
-	
+	//the following main method creates the bst that is later balanced by avl and outputs: the nodes in ascending order, whether the bst was already balanced or not, and the root of the avl tree after balancing mechanism is employed
 	public static void main(String[] args)
 	{
+		//The following four lines of code is how the tree is created
 		BST alpha = new BST(4);
-		alpha.adder(2);
-		alpha.adder(3);
-		alpha.adder(1);
+		alpha.adder(9);
+		alpha.adder(7);
+		alpha.adder(8);
+
 		
 	
 		alpha.ascend(4);
